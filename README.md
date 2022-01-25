@@ -3,7 +3,7 @@ This is the readme file for the python code for that estimates the population si
 
 **Reference**:
 
-"Identifying the temporal dynamics of densification and sparsification in human contact networks," Shaunette Ferguson and Teruyoshi Kobayashi. 
+"Identifying the temporal dynamics of densification and sparsification in human contact networks," Shaunette Ferguson and Teruyoshi Kobayashi. arXiv 2201.09489, 2022. https://arxiv.org/pdf/2201.09489.pdf
 
 
 ## Sample network data (.csv files)
