@@ -38,7 +38,7 @@ The following inputs are required to implement the maximum-likelihood estimation
 
 ## Code **Maximum-likelihood-estimation.ipynb**
 In the Jupyter notebook file Maximum-likelihood-estimation.ipynb, we define the method used to estimate the overall activity (&kappa;) and population size (N</sub>p) for networks.
-The inputs to this function 
+ 
 To run the code, you need to import the following:
 * Pandas
 * Numpy
