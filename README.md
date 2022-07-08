@@ -23,12 +23,11 @@ A sequence of snapshot networks is created, for each dataset, every 5 minutes fo
 
 The following inputs are required to implement the maximum-likelihood estimation:
 	
-1. **NMseq**: A T x 3  array (i.e., a sequence of triplets), each triplet consists of the time (*t*), number of active nodes (*N*) and the number of edges (*M*). *N* and *M* are integers. 
-	Each sequence of (*t*, *N*, *M*) belongs to a single day.
+1. **NMseq**: A T x 2  array (i.e., a sequence of (N,M) pairs), each pair consists of the number of active nodes (*N*) and the number of edges (*M*). *N* and *M* are integers. 
+	Each sequence of (*N*, *M*) belongs to a single day and each (*N*, *M*) is associated with a snapshot.
 	
-	* _t_: Identifies the time interval *[t,t+\Delta t]* in datetime.datetime format.
-	* _N_: An integer denoting the number of nodes that have at least one edge (or link) at *t* on a given day *d*.
-	* _M_: An integer denoting the total edges at time interval *t* on a given day *d*.
+	* _N_: An integer denoting the number of nodes that have at least one edge (or link).
+	* _M_: An integer denoting the total edges in a given snapshot.
 	
 2. **likelihood_funcs**: Likelihood functions which are joint probability distributions for given combinations of the model parameters, &kappa; and N</sub>p. Dictionary format with key and values (i.e., ID of parameter combination: joint prob. dist.).
 	For Hospital, IC2S2-17 and WS-16 data sets, we use the likelihood fuctions in the **Likelihoodfns** folder and for Workplace data set we use those in **Likelihoodfns_workplace**.
@@ -36,8 +35,8 @@ The following inputs are required to implement the maximum-likelihood estimation
 3. **params**: Parameter combinations matched with unique identifiers. Dictionary format with key and values (i.e., Identifier: unique tuple combination of &kappa; and N</sub>p) e.g., p0: (0,2) denotes combination identifier p0 for &kappa; = 0 and N</sub>p = 2.
 	From the **parameter_combinations** folder, we use _paramcombs.csv_ for Hospital, IC2S2-17 and WS-16 data sets and for the Workplace data set we use those in _paramcombs_workplace.csv_.
 
-## Code **Maximum-likelihood-estimation.ipynb**
-In the Jupyter notebook file Maximum-likelihood-estimation.ipynb, we define the method used to estimate the overall activity (&kappa;) and population size (N</sub>p) for networks.
+## Code **MaximumLikelihoodEstimation.ipynb**
+In the Jupyter notebook file MaximumLikelihoodEstimation.ipynb, we define the method used to estimate the overall activity (&kappa;) and population size (N</sub>p) for networks.
 The inputs to this function 
 To run the code, you need to import the following:
 * Pandas
