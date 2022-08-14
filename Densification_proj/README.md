@@ -37,12 +37,12 @@ The following packages are needed:
 * Pandas
 * Numpy
 * Numba
-* configmle
+* configr
 
-The *configmle.py* script allows the user to change the directory location for *parameter_combinations* and *likelihoodfns* on which *MLestimation.py* depends.
+The *configr.py* script allows the user to change the directory location for *parameter_combinations* and *likelihoodfns* on which *MLestimation.py* depends.
 
 ## To implement the method:
-1. Download all folders/files (parameter_combinations, likelihoodfns, config.py etc.)
+1. Download all folders/files (parameter_combinations, likelihoodfns, configr.py etc.)
 2. For *config.py*, update the file location for *parameter_combinations* and *likelihoodfns* to your working directory. Save.
 3. You may now ```import MLestimation as mle``` as use as shown in the demo file. The module takes 1 minute to load.
 Note that the MLestimation module takes as input an (N, M) sequence denoting, respectively, total active nodes and total edges.
