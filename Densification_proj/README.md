@@ -1,5 +1,5 @@
 # densificationscalingMLE
-This is the readme file for the python code for that estimates the population size and overall activity in temporal networks based on a numerical maximum-likelihood method.
+This is the README file for the python code that estimates the population size and overall activity in temporal networks based on a numerical maximum-likelihood method.
 
 **Reference**:
 
@@ -18,17 +18,12 @@ d) **WS-16**: Contacts between participants of the Computational Social Science 
 	
 ## Data format
 
-The following inputs are required to implement the maximum-likelihood estimation:
+The following input is required to implement the maximum-likelihood estimation:
 	
-1. **NM**: *L* x 2  array (i.e., sequence of (*N*,*M*) tuples). The length of the sequence is denoted by *L*.
+**NM**: *L* x 2  array (i.e., sequence of (*N*,*M*) tuples). The length of the sequence is denoted by *L*.
 	* _N_: An integer denoting the number of nodes that have at least one edge (or link).
 	* _M_: An integer denoting the total edges.
 	
-2. **likelihood_funcs**: Likelihood functions which are joint probability distributions for given combinations of the model parameters, &kappa; and N</sub>p. Dictionary format with key and values (i.e., ID of parameter combination: joint prob. dist.).
-	For Hospital, IC2S2-17 and WS-16 data sets, we use the likelihood fuctions in the **Likelihoodfns** folder and for Workplace data set we use those in **Likelihoodfns_workplace**.
-	
-3. **params**: Parameter combinations matched with unique identifiers. Dictionary format with key and values (i.e., Identifier: unique tuple combination of &kappa; and N</sub>p) e.g., p0: (0,2) denotes combination identifier p0 for &kappa; = 0 and N</sub>p = 2.
-	From the **parameter_combinations** folder, we use _paramcombs.csv_ for Hospital, IC2S2-17 and WS-16 data sets and for the Workplace data set we use those in _paramcombs_workplace.csv_.
 
 ## Code **MLestimation.py**
 The python script defines the methods used to estimate the overall activity (&kappa;) and population size (N</sub>p) for networks.
@@ -52,3 +47,9 @@ An example of how to implement our numerical maximum likelihood estimation is sh
 
 ## Additional info:
 In generateMLF.ipynb, we demonstrate how joint probability distributions(likelihood functions) are generated. The user may therefore update the probability equation from p<sub>ij</sub> = 1-e<sup>-&kappa;a<sub>i</sub>a<sub>j</sub></sup> as used in our analysis to any other form as desired. 
+
+Likelihoodfs folder has joint probability distributions for given combinations of the model parameters, &kappa; and N</sub>p. Dictionary format with key and values (i.e., ID of parameter combination: joint prob. dist.).
+	For Hospital, IC2S2-17 and WS-16 data sets, we use the likelihood fuctions in the **Likelihoodfns** folder and for Workplace data set we use those in **Likelihoodfns_workplace**.
+	
+Parameter_combinations folder has tuple combinations of the parameters unique along with their respective identifiers. Dictionary format with key and values (i.e., Identifier: unique tuple combination of &kappa; and N</sub>p) e.g., p0: (0,2) denotes combination identifier p0 for &kappa; = 0 and N</sub>p = 2.
+	From the **parameter_combinations** folder, we use _paramcombs.csv_ for Hospital, IC2S2-17 and WS-16 data sets and for the Workplace data set we use those in _paramcombs_workplace.csv_.
