@@ -16,19 +16,13 @@ b) **Workplace**: Contacts between workers in an office building in France in 20
 
 d) **WS-16**: Contacts between participants of the Computational Social Science Winter Symposium 2016 at GESIS in Cologne. Original data can be found at: <https://zenodo.org/record/2531537#.X6qTndtUvOQ>
 	
-A sequence of snapshot networks is created, for each dataset, every 5 minutes for each day. The length of each a single snapshot (i.e., a time window) is 10 minutes. 
-
-
 ## Data format
 
 The following inputs are required to implement the maximum-likelihood estimation:
 	
-1. **NMseq**: A T x 3  array (i.e., a sequence of triplets), each triplet consists of the time (*t*), number of active nodes (*N*) and the number of edges (*M*). *N* and *M* are integers. 
-	Each sequence of (*t*, *N*, *M*) belongs to a single day.
-	
-	* _t_: Identifies the time interval *[t,t+\Delta t]* in datetime.datetime format.
-	* _N_: An integer denoting the number of nodes that have at least one edge (or link) at *t* on a given day *d*.
-	* _M_: An integer denoting the total edges at time interval *t* on a given day *d*.
+1. **NM**: *L* x 2  array (i.e., sequence of (*N*,*M*) tuples). The length of the sequence is denoted by *L*.
+	* _N_: An integer denoting the number of nodes that have at least one edge (or link).
+	* _M_: An integer denoting the total edges.
 	
 2. **likelihood_funcs**: Likelihood functions which are joint probability distributions for given combinations of the model parameters, &kappa; and N</sub>p. Dictionary format with key and values (i.e., ID of parameter combination: joint prob. dist.).
 	For Hospital, IC2S2-17 and WS-16 data sets, we use the likelihood fuctions in the **Likelihoodfns** folder and for Workplace data set we use those in **Likelihoodfns_workplace**.
@@ -36,19 +30,25 @@ The following inputs are required to implement the maximum-likelihood estimation
 3. **params**: Parameter combinations matched with unique identifiers. Dictionary format with key and values (i.e., Identifier: unique tuple combination of &kappa; and N</sub>p) e.g., p0: (0,2) denotes combination identifier p0 for &kappa; = 0 and N</sub>p = 2.
 	From the **parameter_combinations** folder, we use _paramcombs.csv_ for Hospital, IC2S2-17 and WS-16 data sets and for the Workplace data set we use those in _paramcombs_workplace.csv_.
 
-## Code **Maximum-likelihood-estimation.ipynb**
-In the Jupyter notebook file Maximum-likelihood-estimation.ipynb, we define the method used to estimate the overall activity (&kappa;) and population size (N</sub>p) for networks.
+## Code **MLestimation.py**
+The python script defines the methods used to estimate the overall activity (&kappa;) and population size (N</sub>p) for networks.
  
-To run the code, you need to import the following:
+The following packages are needed: 
 * Pandas
 * Numpy
 * Numba
+* configmle
 
-To implement the method, the sequence of (total active nodes, total edges) i.e., (N,M) is required as an input. 
+The *configmle.py* script allows the user to change the directory location for *parameter_combinations* and *likelihoodfns* on which *MLestimation.py* depends.
+
+## To implement the method:
+1. Download all folders/files (parameter_combinations, likelihoodfns, config.py etc.)
+2. For *config.py*, update the file location for *parameter_combinations* and *likelihoodfns* to your working directory. Save.
+3. You may now ```import MLestimation as mle``` as use as shown in the demo file. The module takes 1 minute to load.
+Note that the MLestimation module takes as input an (N, M) sequence denoting, respectively, total active nodes and total edges.
 
 ## Demo   
-An example of how to implement our numerical maximum likelihood estimation is shown in Demo.ipynb.
+An example of how to implement our numerical maximum likelihood estimation is shown in Demo.ipynb. The module takes 1 minute to load.
 
+## Additional info:
 In generateMLF.ipynb, we demonstrate how joint probability distributions(likelihood functions) are generated. The user may therefore update the probability equation from p<sub>ij</sub> = 1-e<sup>-&kappa;a<sub>i</sub>a<sub>j</sub></sup> as used in our analysis to any other form as desired. 
-
-    	
